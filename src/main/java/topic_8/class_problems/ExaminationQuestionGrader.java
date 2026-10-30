@@ -1,3 +1,5 @@
+package topic_8.class_problems;
+
 import java.util.*;
 import java.util.regex.*;
 
