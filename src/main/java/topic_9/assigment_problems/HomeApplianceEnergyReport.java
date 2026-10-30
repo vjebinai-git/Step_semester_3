@@ -120,14 +120,15 @@ public class HomeApplianceEnergyReport {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        int n = Integer.parseInt(sc.nextLine().trim());
         List<Appliance> appliances = new ArrayList<>();
         List<Boolean> saverRequests = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
-            String type = sc.next();
-            double hours = sc.nextDouble();
-            boolean saverRequested = sc.hasNext() && sc.next().equals("SAVER");
+            String[] parts = sc.nextLine().trim().split("\\s+");
+            String type = parts[0];
+            double hours = Double.parseDouble(parts[1]);
+            boolean saverRequested = parts.length > 2 && parts[2].equals("SAVER");
 
             Appliance appliance;
             switch (type) {
