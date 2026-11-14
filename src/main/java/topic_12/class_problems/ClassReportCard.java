@@ -81,8 +81,8 @@ public class ClassReportCard {
                     break; // One adjacent move per pass, as described in the example.
                 }
             }
-            passes++;
             if (!swapped) break;
+            passes++; // Count only passes that make an adjacent swap.
             end++; // Repeat the remaining adjacent moves until the list is ordered.
         }
 
