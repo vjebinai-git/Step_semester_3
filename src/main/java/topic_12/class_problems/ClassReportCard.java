@@ -69,21 +69,18 @@ public class ClassReportCard {
         }
 
         int passes = 0;
-        // Each pass moves a larger total one position toward the front.
-        for (int end = students.size() - 1; end > 0; end--) {
+        for (int i = 0; i < students.size() - 1; i++) {
             boolean swapped = false;
-            for (int j = end; j > 0; j--) {
-                if (students.get(j).getTotal() > students.get(j - 1).getTotal()) {
+            for (int j = 0; j < students.size() - i - 1; j++) {
+                if (students.get(j).getTotal() < students.get(j + 1).getTotal()) {
                     Student temp = students.get(j);
-                    students.set(j, students.get(j - 1));
-                    students.set(j - 1, temp);
+                    students.set(j, students.get(j + 1));
+                    students.set(j + 1, temp);
                     swapped = true;
-                    break; // One adjacent move per pass, as described in the example.
                 }
             }
             if (!swapped) break;
-            passes++; // Count only passes that make an adjacent swap.
-            end++; // Repeat the remaining adjacent moves until the list is ordered.
+            passes++;
         }
 
         for (int i = 0; i < students.size(); i++) {
